@@ -1,4 +1,4 @@
-# Cost Map Generator
+# Local Costmap Generator Node (ROS, C++)
 
 ## Intro
 Generate Cost Map using Point Cloud Height Map algorithm
