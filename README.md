@@ -9,41 +9,26 @@ After building this ROS package using 'catkin_make' in your catkin workspace, la
 `roslaunch local_costmap_generator run.launch`
 
 ## TODO (in heightmap.cpp)
+TODO: find and change the topic name of the point cloud data
+https://github.com/hynkis/local_costmap_generator/blob/fc3f4a86131d87b010f53c9b48512b4afb0942b3/src/heightmap.cpp#L58-L62
 
-    // TODO: find and change the topic name of the point cloud data
-
-    // TODO: convert position of points from camera to local coordinate
-    // - camera coordinate (x,y,z): scan->points[i].x, scan->points[i].y, scan->points[i].z
-    // - local coordinate (x,y,z): local_x, local_y, local_z
+TODO: convert the position of the points from the camera to the local coordinate
+https://github.com/hynkis/local_costmap_generator/blob/fc3f4a86131d87b010f53c9b48512b4afb0942b3/src/heightmap.cpp#L79-L84
+https://github.com/hynkis/local_costmap_generator/blob/fc3f4a86131d87b010f53c9b48512b4afb0942b3/src/heightmap.cpp#L102-L107
+https://github.com/hynkis/local_costmap_generator/blob/fc3f4a86131d87b010f53c9b48512b4afb0942b3/src/heightmap.cpp#L149-L154
+https://github.com/hynkis/local_costmap_generator/blob/fc3f4a86131d87b010f53c9b48512b4afb0942b3/src/heightmap.cpp#L174-L178
 
 ## Parameters (in heightmap.cpp)
-
-    // get parameters using private node handle
-    priv_nh.param("cell_size", m_per_cell_, 0.1); // [m / cell]
-    priv_nh.param("full_clouds", full_clouds_, false);
-    priv_nh.param("grid_dimensions", grid_dim_, 200); // [cell] size of map; 200 cell = 20 [m] / 0.1 [m/cell]; 20 is calculated from MAP_MAX_X - MAP_MIN_X at 'heightmap_to_costmap.cpp'
-    priv_nh.param("height_threshold", height_diff_threshold_, 0.25); // [m]
+https://github.com/hynkis/local_costmap_generator/blob/fc3f4a86131d87b010f53c9b48512b4afb0942b3/src/heightmap.cpp#L43-L46
 
 ## Parameters (in heightmap_to_costmap.cpp)
+https://github.com/hynkis/local_costmap_generator/blob/fc3f4a86131d87b010f53c9b48512b4afb0942b3/src/heightmap_to_costmap.cpp#L29-L38
 
-    ```
-    bool DO_INFLATION = true; // true
-    float RESOLUTION_ = 0.1; // [m / cell]
-    float MAP_MIN_X =  -5; // map min x position
-    float MAP_MAX_X =  15; // map max x position
-    float MAP_MIN_Y = -10; // map min y position
-    float MAP_MAX_Y =  10; // map max y position
-
-    float INFLATION_RADIUS = 0.2; // [m] size of inflation
-    float INFLATION_RES    = RESOLUTION_; // [m] resolution of inflation
-    int INFLATION_BINS     = INFLATION_RADIUS / INFLATION_RES;
-    ```
-
-## Subscribed Topics
+## Topics to subscribe
 
 * /points <-- change to correct topic name
 
-## Published Topics
+## Topics to publish
 
 * /points/velodyne_obstacles
 * /points/velodyne_clear
