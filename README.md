@@ -4,7 +4,7 @@
 Generate Cost Map using Point Cloud Height Map algorithm
 
 ## Running
-Launch the velodyne height map node with costmap generator node:
+After building this ROS package using 'catkin_make' in your catkin workspace, launch the heightmap_node with heightmap_costmap_node:
 
 `roslaunch local_costmap_generator run.launch`
 
